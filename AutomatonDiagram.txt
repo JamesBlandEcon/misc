@@ -1,0 +1,75 @@
+
+\begin{tabular}{cccc}
+{\bf AC} & {\bf Grim} & {\bf TFT} & 
+\multirow{4}{*}{
+\begin{tabular}{c}
+{\bf T2} \\
+\begin{tikzpicture}
+   \node[state,initial, initial text = ] (C)   {C}; 
+   \node[state] (D1) [right = of C, above = of C] {D};
+   \node[state] (D2) [right = of D1] {D};
+   \path[->]  (C) edge [loop below] node {cc, dc} (C);
+   \path[->]  (C) edge [bend left,left] node {cd, dd} (D1);
+   \path[->]  (D1) edge [loop above] node {cd, dd} (D1);
+   \path[->]  (D1) edge [bend left, above] node {cc, dc} (D2);
+   \path[->]  (D2) edge [bend left, below] node {cd, dd} (D1);
+   \path[->]  (D2) edge [bend left, right] node {cc, dc} (C);
+\end{tikzpicture}
+\end{tabular}
+}
+\\
+\begin{tikzpicture} 
+   \node[state,initial, initial text = ] (C)   {C}; 
+   \path[->]  (C) edge [loop below] (C);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+   \node[state,initial, initial text = ] (C)   {C}; 
+   \node[state] (D) [right=of C] {D};
+   \path[->]  (C) edge [loop above] node {cc} (C);
+   \draw[->]  (C) edge [bend right, below] node {cd, dc, dd} (D);
+   \path[->]  (D) edge [loop above] (D);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+   \node[state,initial, initial text = ] (C)   {C}; 
+   \node[state] (D) [right=of C] {D};
+   \path[->]  (C) edge [loop above] node {cc, dc} (C);
+   \draw[->]  (C) edge [bend left, above] node {cd, dd} (D);
+   \draw[->]  (D) edge [bend left, below] node {cc, dc} (C);
+   \path[->]  (D) edge [loop above] node {cd, dd} (D);
+\end{tikzpicture}
+
+&
+
+\\ \\
+{\bf AD} & {\bf WSLS} & {\bf STFT} &\\
+\begin{tikzpicture}
+   \node[state,initial, initial text = ] (D)   {D}; 
+   \path[->]  (D) edge [loop below] (D);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+   \node[state,initial, initial text = ] (C)   {C}; 
+   \node[state] (D) [right=of C] {D};
+   \path[->]  (C) edge [loop above] node {cc, dd} (C);
+   \draw[->]  (C) edge [bend left, above] node {cd, dc} (D);
+   \draw[->]  (D) edge [bend left, below] node {cc, dd} (C);
+   \path[->]  (D) edge [loop above] node {cd, dc} (D);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+   \node[state] (C)   {C}; 
+   \node[state,initial, initial text = ,initial where = right] (D) [right=of C] {D};
+   \path[->]  (C) edge [loop above] node {cc, dc} (C);
+   \draw[->]  (C) edge [bend left, above] node {cd, dd} (D);
+   \draw[->]  (D) edge [bend left, below] node {cc, dc} (C);
+   \path[->]  (D) edge [loop above] node {cd, dd} (D);
+\end{tikzpicture}
+&
+
+\end{tabular}
+
+ 
+ 
+
